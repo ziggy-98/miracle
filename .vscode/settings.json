@@ -4,7 +4,7 @@
         {
             "format": "expanded",
             "extensionName": ".css",
-            "savePath": "/src/App.css"
+            "savePath": "/src"
         }
     ],
     "liveSassCompile.settings.excludeList": [
