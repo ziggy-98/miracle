@@ -1,30 +1,37 @@
 body{
     background-color: $base-blue;
+    .header{
+      background-color: $base-accent;
+    }
     .title{
       width: 1170px;
       padding: 0 15px;
       text-align: center;
       margin: auto;
-      margin-bottom: 60px;
+      padding-bottom: 40px;
+      h1{
+        margin: 0;
+        padding-top: 40px;
+      }
     }
     h1{
         font-size: $h1;
         font-weight: $bold;
         font-family: $text-headings;
-        color: white;
+        color: $base-contrast;
         font-style: italic;
     }
     h2{
       font-size: $h2;
       font-weight: $bold;
       font-family: $text-headings;
-      color: white;
+      color: $base-contrast;
     }
     p{
       font-size: $p;
       font-weight: $regular;
       font-family: $text-body;
-      color: white;
+      color: $base-contrast;
     }
     .users-container{
       width: 1170px;
@@ -35,6 +42,15 @@ body{
         padding: 15px 0;
         .user{
           margin: 15px 0;
+          display:flex;
+          align-items: center;
+          .image-wrapper{
+            margin-right: 30px;
+            img{
+              height: 80px;
+              width: auto;
+            }
+          }
         }
       }
     }
@@ -44,10 +60,50 @@ body{
       .form-field{
         display: block;
         margin-bottom: 30px;
-        color: white;
+        color: $base-contrast;
         label{
           display:block;
           font-family: $text-body;
+        }
+        .choose-avatar-list{
+          list-style-type: none;
+          display: block;
+          margin-bottom: 30px;
+          padding-left: 0;
+          width: 600px;
+          li{
+            display: flex;
+            float: left;
+            padding-right: 30px;
+            width: 25%;
+            flex-wrap: wrap;
+            box-sizing: border-box;
+            justify-content: center;
+            img{
+              display: block;
+              height: 125px;
+              width: 100%;
+              margin-bottom: 15px;
+              cursor: pointer;
+              border-radius: 50%;
+              border: 8px solid transparent;
+              transition: all ease-in-out 300ms;
+            }
+            input{
+              visibility: hidden;
+            }
+            &.selected{
+              img{
+                border: 8px solid $base-accent;
+              }
+            }
+          }
+          &:after{
+            display: block;
+            width: 100%;
+            clear: both;
+            content: "";
+          }
         }
       }
       .form-field label input{
