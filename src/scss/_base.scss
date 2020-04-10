@@ -1,0 +1,20 @@
+#root{
+    background-color: $base-blue;
+    h1{
+        font-size: $h1;
+        font-weight: $bold;
+        font-family: $text-headings;
+        color: white;
+        font-style: italic;
+    }
+}
+.title{
+    .form-field{
+        display: block;
+        margin-bottom: 30px;
+      }
+      .form-field label input{
+        display: block;
+        padding-top: 5px;
+      }
+}
