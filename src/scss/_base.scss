@@ -1,5 +1,12 @@
-#root{
+body{
     background-color: $base-blue;
+    .title{
+      width: 1170px;
+      padding: 0 15px;
+      text-align: center;
+      margin: auto;
+      margin-bottom: 60px;
+    }
     h1{
         font-size: $h1;
         font-weight: $bold;
@@ -7,14 +14,72 @@
         color: white;
         font-style: italic;
     }
-}
-.title{
-    .form-field{
+    h2{
+      font-size: $h2;
+      font-weight: $bold;
+      font-family: $text-headings;
+      color: white;
+    }
+    p{
+      font-size: $p;
+      font-weight: $regular;
+      font-family: $text-body;
+      color: white;
+    }
+    .users-container{
+      width: 1170px;
+      padding: 0 15px;
+      margin: auto;
+      margin-bottom: 30px;
+      .users-wrapper{
+        padding: 15px 0;
+        .user{
+          margin: 15px 0;
+        }
+      }
+    }
+    .form-container{
+      width: 1170px;
+      margin: auto;
+      .form-field{
         display: block;
         margin-bottom: 30px;
+        color: white;
+        label{
+          display:block;
+          font-family: $text-body;
+        }
       }
       .form-field label input{
         display: block;
         padding-top: 5px;
       }
+    }
+    .intro-container{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .intro-wrapper{
+        .start-button-container{
+          margin-top: 30px;
+          text-align: center;
+          .add-players-button{
+            color: $base-blue;
+            background-color: $base-contrast;
+            padding: 15px 25px;
+            border-radius: 8px;
+            text-transform: uppercase;
+            font-family: $text-headings;
+            font-size: $h4;
+            font-weight: $bold;
+
+          }
+        }
+      }
+    }
 }

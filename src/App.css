@@ -1,8 +1,16 @@
-#root {
+body {
   background-color: #1a2b45;
 }
 
-#root h1 {
+body .title {
+  width: 1170px;
+  padding: 0 15px;
+  text-align: center;
+  margin: auto;
+  margin-bottom: 60px;
+}
+
+body h1 {
   font-size: 48px;
   font-weight: 700;
   font-family: "Arvo", serif;
@@ -10,13 +18,86 @@
   font-style: italic;
 }
 
-.title .form-field {
-  display: block;
+body h2 {
+  font-size: 36px;
+  font-weight: 700;
+  font-family: "Arvo", serif;
+  color: white;
+}
+
+body p {
+  font-size: 18px;
+  font-weight: 400;
+  font-family: "Open Sans", sans-serif;
+  color: white;
+}
+
+body .users-container {
+  width: 1170px;
+  padding: 0 15px;
+  margin: auto;
   margin-bottom: 30px;
 }
 
-.title .form-field label input {
+body .users-container .users-wrapper {
+  padding: 15px 0;
+}
+
+body .users-container .users-wrapper .user {
+  margin: 15px 0;
+}
+
+body .form-container {
+  width: 1170px;
+  margin: auto;
+}
+
+body .form-container .form-field {
+  display: block;
+  margin-bottom: 30px;
+  color: white;
+}
+
+body .form-container .form-field label {
+  display: block;
+  font-family: "Open Sans", sans-serif;
+}
+
+body .form-container .form-field label input {
   display: block;
   padding-top: 5px;
+}
+
+body .intro-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+body .intro-container .intro-wrapper .start-button-container {
+  margin-top: 30px;
+  text-align: center;
+}
+
+body .intro-container .intro-wrapper .start-button-container .add-players-button {
+  color: #1a2b45;
+  background-color: #a6b0bf;
+  padding: 15px 25px;
+  border-radius: 8px;
+  text-transform: uppercase;
+  font-family: "Arvo", serif;
+  font-size: 24px;
+  font-weight: 700;
 }
 /*# sourceMappingURL=App.css.map */
