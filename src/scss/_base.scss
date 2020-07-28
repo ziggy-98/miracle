@@ -27,6 +27,12 @@ body{
       font-family: $text-headings;
       color: $base-contrast;
     }
+    h3{
+      font-size: $h3;
+      font-weight: $regular;
+      font-family: $text-headings;
+      color: $base-contrast;
+    }
     p{
       font-size: $p;
       font-weight: $regular;
@@ -38,19 +44,40 @@ body{
       padding: 0 15px;
       margin: auto;
       margin-bottom: 30px;
+      h2{
+        margin-bottom: 15px;
+      }
       .users-wrapper{
         padding: 15px 0;
-        .user{
-          margin: 15px 0;
-          display:flex;
-          align-items: center;
-          .image-wrapper{
+        .user-container{
+          float: left;
+          .user{
+            margin: 0;
             margin-right: 30px;
-            img{
-              height: 80px;
-              width: auto;
+            display:flex;
+            align-items: center;
+            float: left;
+            overflow: hidden;
+            .image-wrapper{
+              margin-right: 15px;
+              img{
+                height: 80px;
+                width: auto;
+              }
             }
           }
+          &:after{
+            display: block;
+            width: 100%;
+            clear: both;
+            content: "";
+          }
+        }
+        &:after{
+          display: block;
+          width: 100%;
+          clear: both;
+          content: "";
         }
       }
     }
@@ -135,6 +162,52 @@ body{
             font-weight: $bold;
 
           }
+        }
+      }
+    }
+    .get-started-container{
+      width: 1170px;
+      margin: auto;
+      padding: 0 15px;
+      padding-top: 45px;
+      text-align: center;
+      h3{
+        text-align: center;
+      }
+      .get-started-button{
+        color: $base-blue;
+        background-color: $base-contrast;
+        padding: 15px 25px;
+        border-radius: 8px;
+        text-transform: uppercase;
+        font-family: $text-headings;
+        font-size: $h4;
+        font-weight: $bold;
+        opacity: 1;
+        transition: all ease-in-out 300ms;
+        &.disabled{
+          opacity: 0.4;
+
+        }
+      }
+    }
+    .players-container{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 1170px;
+      padding: 0 15px;
+      margin: auto;
+      margin-top: 50px;
+      .player-container{
+        text-align: center;
+        margin-right: 45px;
+        img{
+          height: 120px;
+          width: auto;
+        }
+        p{
+          font-weight: $semi-bold;
         }
       }
     }
