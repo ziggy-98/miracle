@@ -34,6 +34,13 @@ body h2 {
   color: #a6b0bf;
 }
 
+body h3 {
+  font-size: 32px;
+  font-weight: 400;
+  font-family: "Arvo", serif;
+  color: #a6b0bf;
+}
+
 body p {
   font-size: 18px;
   font-weight: 400;
@@ -48,27 +55,52 @@ body .users-container {
   margin-bottom: 30px;
 }
 
+body .users-container h2 {
+  margin-bottom: 15px;
+}
+
 body .users-container .users-wrapper {
   padding: 15px 0;
 }
 
-body .users-container .users-wrapper .user {
-  margin: 15px 0;
+body .users-container .users-wrapper .user-container {
+  float: left;
+}
+
+body .users-container .users-wrapper .user-container .user {
+  margin: 0;
+  margin-right: 30px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  float: left;
+  overflow: hidden;
 }
 
-body .users-container .users-wrapper .user .image-wrapper {
-  margin-right: 30px;
+body .users-container .users-wrapper .user-container .user .image-wrapper {
+  margin-right: 15px;
 }
 
-body .users-container .users-wrapper .user .image-wrapper img {
+body .users-container .users-wrapper .user-container .user .image-wrapper img {
   height: 80px;
   width: auto;
+}
+
+body .users-container .users-wrapper .user-container:after {
+  display: block;
+  width: 100%;
+  clear: both;
+  content: "";
+}
+
+body .users-container .users-wrapper:after {
+  display: block;
+  width: 100%;
+  clear: both;
+  content: "";
 }
 
 body .form-container {
@@ -174,5 +206,126 @@ body .intro-container .intro-wrapper .start-button-container .add-players-button
   font-family: "Arvo", serif;
   font-size: 24px;
   font-weight: 700;
+}
+
+body .get-started-container {
+  width: 1170px;
+  margin: auto;
+  padding: 0 15px;
+  padding-top: 45px;
+  text-align: center;
+}
+
+body .get-started-container h3 {
+  text-align: center;
+}
+
+body .get-started-container .get-started-button {
+  color: #1a2b45;
+  background-color: #a6b0bf;
+  padding: 15px 25px;
+  border-radius: 8px;
+  text-transform: uppercase;
+  font-family: "Arvo", serif;
+  font-size: 24px;
+  font-weight: 700;
+  opacity: 1;
+  -webkit-transition: all ease-in-out 300ms;
+  transition: all ease-in-out 300ms;
+}
+
+body .get-started-container .get-started-button.disabled {
+  opacity: 0.4;
+}
+
+body .players-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 1170px;
+  padding: 0 15px;
+  margin: auto;
+  margin-top: 50px;
+}
+
+body .players-container .player-container {
+  text-align: center;
+  margin-right: 45px;
+}
+
+body .players-container .player-container img {
+  height: 120px;
+  width: auto;
+}
+
+body .players-container .player-container p {
+  font-weight: 600;
+}
+
+.header-appear {
+  opacity: 0.01;
+}
+
+.header-appear.header-appear-active {
+  opacity: 1;
+  -webkit-transition: all 500ms ease-in 300ms;
+  transition: all 500ms ease-in 300ms;
+}
+
+.intro-appear {
+  opacity: 0.01;
+  -webkit-transform: translateY(50vh);
+          transform: translateY(50vh);
+}
+
+.intro-appear.intro-appear-active {
+  opacity: 1;
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+  -webkit-transition: all 500ms ease-in-out 1000ms;
+  transition: all 500ms ease-in-out 1000ms;
+}
+
+.intro-leave {
+  opacity: 1;
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+
+.intro-leave .intro-leave-active {
+  opacity: 0.01;
+  -webkit-transform: translateY(-25vh);
+          transform: translateY(-25vh);
+  -webkit-transition: all 300ms ease-in;
+  transition: all 300ms ease-in;
+}
+
+.users-enter {
+  opacity: 0.01;
+  height: 1px;
+}
+
+.users-enter.users-enter-active {
+  opacity: 1;
+  height: 83px;
+  -webkit-transition: all 500ms ease-in;
+  transition: all 500ms ease-in;
+}
+
+.users-leave {
+  opacity: 1;
+}
+
+.users-leave.users-leave-active {
+  opacity: 0.01;
+  height: 1;
+  -webkit-transition: all 300ms ease-in;
+  transition: all 300ms ease-in;
 }
 /*# sourceMappingURL=App.css.map */
