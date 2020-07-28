@@ -1,0 +1,42 @@
+.header-appear{
+    opacity: 0.01;
+    &.header-appear-active{
+        opacity: 1;
+        transition: all 500ms ease-in 300ms;
+    }
+}
+.intro-appear{
+    opacity: 0.01;
+    transform: translateY(50vh);
+    &.intro-appear-active{
+        opacity: 1;
+        transform: translateY(0);
+        transition: all 500ms ease-in-out 1000ms;
+    }
+}
+.intro-leave{
+    opacity: 1;
+    transform: translateY(0);
+    .intro-leave-active{
+        opacity: 0.01;
+        transform: translateY(-25vh);
+        transition: all 300ms ease-in;
+    }
+}
+.users-enter{
+    opacity: 0.01;
+    height: 1px;
+    &.users-enter-active{
+        opacity: 1;
+        height: 83px;
+        transition: all 500ms ease-in;
+    }
+}
+.users-leave{
+    opacity: 1;
+    &.users-leave-active{
+        opacity: 0.01;
+        height: 1;
+        transition: all 300ms ease-in;
+    }
+}
