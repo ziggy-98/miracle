@@ -1,19 +1,34 @@
 import React from 'react';
 import './App.css';
+import {TransitionGroup, CSSTransitionGroup} from 'react-transition-group';
 
 class User extends React.Component{
+  componentDidMount(){
+
+  }
   render(){
     const element = 
       <div className="user">
-        <div class="image-wrapper">
+        <div className="image-wrapper">
           <img src={"/assets/"+this.props.avatar+'.png'} alt={this.props.nickname + '\'s avatar'} />
         </div>
-        <div class="info-wrapper">
+        <div className="info-wrapper">
           <p>{this.props.nickname}</p>
         </div>
       </div>;
 
     return (element);
+  }
+}
+
+class Player extends React.Component{
+  render(){
+    const element = 
+      <div key={this.props.nickname} class="player-container">
+        <img src={'/assets/'+this.props.avatar+'.png'} alt={this.props.nickname + '\'s avatar'} />
+        <p>{this.props.nickname}</p>
+      </div>
+    return (element)
   }
 }
 
@@ -63,7 +78,7 @@ class AddPlayersForm extends React.Component{
         </div>
         <div className="form-field">
           <p>Select your avatar</p>
-            <ul class="choose-avatar-list">
+            <ul className="choose-avatar-list">
               <li className={(this.props.avatarValue === 'avatar-1' ? 'selected' : '')} onClick={this.triggerChange}>
                 <img src="/assets/avatar-1.png" alt="avatar choice 1" />
                 <input name="avatarValue" ref={input => this.avatar1 = input} type="radio" value="avatar-1" checked={this.isSelected('avatar-1')} onChange={this.props.onChange} />
@@ -96,12 +111,14 @@ class Game extends React.Component{
     this.state = {
       firstNameValue: '',
       avatarValue: '',
+      addPlayers: false,
       startPressed: false,
       users: Array(0) 
     }
     this.handleChange = this.handleChange.bind(this);
     this.updateUsers = this.updateUsers.bind(this);
     this.addPlayers = this.addPlayers.bind(this);
+    this.startGame = this.startGame.bind(this);
   }
 
   handleChange(event){
@@ -129,6 +146,13 @@ class Game extends React.Component{
   addPlayers(){
     let startPressed = true;
     this.setState({
+      addPlayers: startPressed
+    });
+  }
+
+  startGame(){
+    let startPressed = true;
+    this.setState({
       startPressed: startPressed
     });
   }
@@ -136,33 +160,68 @@ class Game extends React.Component{
   render(){
 
     let render ;
-
     if(this.state.startPressed){
       let users = this.state.users.map( (user, key) => {
         return (
-          <User key={'user-'+key} nickname={user.nickname} lastName={user.lastName} avatar={user.avatar} />
+          <Player key={'user-'+key} nickname={user.nickname} avatar={user.avatar} />
         );
-      });
+      })
+      let usersElement = 
+        <div class="players-container">
+          <CSSTransitionGroup
+            transitionName="users"
+            transitionEnterTimeout={500}>
+                        {users}
+            </CSSTransitionGroup>
+        </div>;
+      return (usersElement);
+    }else if(this.state.addPlayers){
+        let users = this.state.users.map( (user, key) => (
+          <div key={key} className="user-container">
+            <User nickname={user.nickname} avatar={user.avatar} />
+          </div>
+        ));
+       let usersElement = <div key="users" className="users-container"><h2>Players</h2><div className="users-wrapper">
+         <CSSTransitionGroup
+          transitionName="users"
+          transitionEnterTimeout={500}
+          transitionLeaveTimeout={300}>
+          {users}
+          </CSSTransitionGroup>
+        </div></div>
   
-      let usersElement = <div key="users" className="users-container"><h2>Players</h2><div className="users-wrapper">{users}</div></div>
-  
-      let form = <AddPlayersForm onSubmit={this.updateUsers} firstNameValue={this.state.firstNameValue} avatarValue={this.state.avatarValue} onChange={this.handleChange} />
+      let form = <AddPlayersForm key="form" onSubmit={this.updateUsers} firstNameValue={this.state.firstNameValue} avatarValue={this.state.avatarValue} onChange={this.handleChange} />
+
+      let startedButton = 
+        <div key="start" className="get-started-container">
+          <h3>Is everybody ready?</h3>
+          <button className={"get-started-button " + (this.state.users.length >= 2 ? '' : 'disabled')} disabled={!this.state.users.length >= 2} onClick={this.startGame}>Start</button>
+        </div>
       render = [
         usersElement,
-        form
+        form,
+        startedButton
       ]
+
     }else{
-      let intro = <div className="intro"><h2>No players added!</h2></div>
+      let intro = <div key="intro" className="intro"><h2>No players added!</h2></div>
       let addPlayers = 
-        <div className="start-button-container">
+        <div key="add-button" className="start-button-container">
           <button className="add-players-button" onClick={this.addPlayers}>Add Players</button>
         </div>;
       render = 
-        <div className="intro-container">
+        <CSSTransitionGroup
+          transitionName="intro"
+          transitionLeaveTimeout={300}
+          transitionAppear={true}
+          transitionAppearTimeout={5000}
+        >
+        <div key="intro-container" className="intro-container">
           <div className="intro-wrapper">
             {intro}{addPlayers}
           </div>
-        </div>;
+        </div>
+        </CSSTransitionGroup>;
     }
 
     return render;
@@ -172,13 +231,19 @@ class Game extends React.Component{
 function App() {
 
   const header = 
-  <header key="header" className="header">
-    <div className="title">
-      <h1>Welcome to Miracle</h1>
-    </div>
-  </header>;
+  <CSSTransitionGroup
+    transitionName="header"
+    transitionAppear={true}
+    transitionAppearTimeout={1000}
+    key="header-group">
+      <header key="header" className="header">
+        <div className="title">
+          <h1>Welcome to Miracle</h1>
+        </div>
+      </header>
+  </CSSTransitionGroup>;
 
-  const game = <Game />
+  const game = <Game key="game" />
 
   return [
     header,
