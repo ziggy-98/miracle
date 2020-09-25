@@ -166,14 +166,28 @@ class Game extends React.Component{
           <Player key={'user-'+key} nickname={user.nickname} avatar={user.avatar} />
         );
       })
-      let usersElement = 
-        <div class="players-container">
+      let usersElement =
+      <div className="instructions-screen">
+        <div className="players-container">
           <CSSTransitionGroup
             transitionName="users"
             transitionEnterTimeout={500}>
                         {users}
             </CSSTransitionGroup>
-        </div>;
+        </div>
+        <CSSTransitionGroup
+            transitionName="instructions"
+            transitionEnterTimeout={800}>
+              <h2 className="instructionsTitle">Instructions</h2>
+              <p>Miracle is a new type of drinking game. It might take some time getting used to but once you start playing you're going to need a miracle if you have any hope getting out of this game sober.</p>
+              <p>Every turn, a player will pick a card from the top of the deck.</p>
+              <ul>
+                <li>This card could be a simple ring of fire card e.g. 2 is you, 3 is me</li>
+                <li>The card could also be a head to head round against a player of your choice. This could be a reaction test, charades, or anything in between.</li>
+                <li></li>
+              </ul>
+            </CSSTransitionGroup>
+      </div>;
       return (usersElement);
     }else if(this.state.addPlayers){
         let users = this.state.users.map( (user, key) => (
